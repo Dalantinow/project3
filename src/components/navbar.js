@@ -14,7 +14,7 @@ class Navbar extends Component {
     logout(event) {
         event.preventDefault()
         console.log('logging out')
-        axios.post('/user/logout').then(response => {
+        axios.post('http://localhost:3001/user/logout').then(response => {
           console.log(response.data)
           if (response.status === 200) {
             this.props.updateUser({

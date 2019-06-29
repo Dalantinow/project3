@@ -6,10 +6,12 @@ const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 const app = express()
-const PORT = 8080
+const PORT = 3001
+const cors = require("cors")
 // Route requires
-const user = require('./routes/user')
 
+app.use(cors());
+const user = require('./routes/user')
 // MIDDLEWARE
 app.use(morgan('dev'))
 app.use(
@@ -18,6 +20,7 @@ app.use(
 	})
 )
 app.use(bodyParser.json())
+
 
 // Sessions
 app.use(
