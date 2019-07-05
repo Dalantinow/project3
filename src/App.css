@@ -1,4 +1,5 @@
-.App {
+
+/* .App {
   text-align: center;
 }
 
@@ -28,5 +29,33 @@
   }
   to {
     transform: rotate(360deg);
+
   }
+} */
+.aecom-single-wrapper .left-sidebar-container {
+  width: 250px;
+}
+.aecom-single-wrapper .left-sidebar-container {
+  float: left;
+  min-height: 1px;
+  width: 185px;
+}
+
+#aecom-share-box-container h4 {
+  font-size: 0.9em;
+  margin-bottom: 0px;
+}
+
+.left-floating-sidebar {
+  background-color: #FFF;
+  padding: 20px 10px;
+}
+
+h4 {
+  font-size: 24px;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: underline;
 }
