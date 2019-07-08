@@ -44,5 +44,3 @@ app.use('/user', user)
 app.listen(PORT, () => {
 	console.log(`App listening on PORT: ${PORT}`)
 })
-
-

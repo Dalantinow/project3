@@ -10,7 +10,6 @@
     "bootstrap": "^4.3.1",
     "bower": "^1.8.8",
     "connect-mongo": "^2.0.1",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.15.6",
     "mongod": "^2.0.0",
@@ -27,13 +26,10 @@
     "yarn": "^1.16.0"
   },
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
