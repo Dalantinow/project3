@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import barclay from "../assets/barclay.png"
+import manchester from "../assets/manchester.png"
+import supercontest from "../assets/supercontest.jpg"
 
 var axios = require("axios");
 class Home extends Component {
@@ -14,11 +16,17 @@ class Home extends Component {
   render() {
     return (
       <div className="logoBackground">
-        <img src={barclay} alt="" />
+        <img src={barclay} alt="" /> 
 
+        <div className="homepage">
+          <img src={manchester} alt="" />
+      </div>
+      <div className="sport">
+        <img src={supercontest} alt="background" />
+      </div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="#">
-          Sports Betting {" "}
+          Sports Betting With Points {" "}
         </a>
 
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
@@ -54,6 +62,8 @@ class Home extends Component {
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
+                  
+
               </div>
             </li>
           </ul>
