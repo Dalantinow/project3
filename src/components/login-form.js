@@ -12,19 +12,17 @@ class LoginForm extends Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
-  
-    }
+    };
 
     handleChange(event) {
         this.setState({
             [event.target.name]: event.target.value
-        })
-    }
+        });
+    };
 
     handleSubmit(event) {
         event.preventDefault()
         console.log('handleSubmit')
-
         axios
             .post('http://localhost:3001/user/login', {
                 username: this.state.username,
@@ -47,9 +45,8 @@ class LoginForm extends Component {
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);
-                
-            })
-    }
+            });
+    };
 
     render() {
         if (this.state.redirectTo) {
@@ -92,15 +89,15 @@ class LoginForm extends Component {
                             <div className="col-7"></div>
                             <button
                                 className="btn btn-primary col-1 col-mr-auto"
-                               
+
                                 onClick={this.handleSubmit}
                                 type="submit">Login</button>
                         </div>
                     </form>
                 </div>
-            )
-        }
-    }
-}
+            );
+        };
+    };
+};
 
-export default LoginForm
+export default LoginForm;

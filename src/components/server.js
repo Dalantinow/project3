@@ -1,18 +1,21 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const morgan = require('morgan')
-const session = require('express-session')
-const dbConnection = require('./database') 
-const MongoStore = require('connect-mongo')(session)
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const session = require('express-session');
+const dbConnection = require('./database');
+const MongoStore = require('connect-mongo')(session);
 const passport = require('./passport');
-const app = express()
-const PORT = 3001
-const cors = require("cors")
+const app = express();
+let PORT = 3000
+const cors = require("cors");
+
 // Route requires
 
 app.use(cors());
 const user = require('./routes/user')
+
 // MIDDLEWARE
+
 app.use(morgan('dev'))
 app.use(
 	bodyParser.urlencoded({
