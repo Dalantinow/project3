@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import { Route, Link } from 'react-router-dom'
+import axios from 'axios';
+import { Route } from 'react-router-dom';
 // components
-import Signup from './components/sign-up'
-import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
-import Home from './components/home'
+import Signup from './components/sign-up';
+import LoginForm from './components/login-form';
+import Navjawn from './components/navbar';
+import Home from './components/home';
+
 
 class App extends Component {
   constructor() {
@@ -18,15 +19,15 @@ class App extends Component {
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     this.updateUser = this.updateUser.bind(this)
-  }
+  };
 
   componentDidMount() {
     this.getUser()
-  }
+  };
 
-  updateUser (userObject) {
+  updateUser(userObject) {
     this.setState(userObject)
-  }
+  };
 
   getUser() {
     axios.get('http://localhost:3001/user').then(response => {
@@ -52,12 +53,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-   
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+     
+    
+        <Navjawn updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         {/* greet user if logged in: */}
         {this.state.loggedIn &&
-          <p>Join the party, {this.state.username}!</p>
+          <p>Welcome the party, {this.state.username}!</p>
         }
+       
         {/* Routes to different components */}
         <Route
           exact path="/"
@@ -72,12 +75,28 @@ class App extends Component {
         <Route
           path="/signup"
           render={() =>
-            <Signup/>}
+            <Signup />}
         />
-
+        
+        <script src="https://unpkg.com/react/umd/react.production.js" crossorigin />
+        <script
+          src="https://unpkg.com/react-dom/umd/react-dom.production.js"
+          crossorigin
+        />
+        <script
+          src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin
+        />
+        <script>var Alert = ReactBootstrap.Alert;</script>
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+        />
       </div>
     );
-  }
-}
+  };
+};
 
 export default App;
