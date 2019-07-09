@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import barclay from "../assets/barclay.png"
-import manchester from "../assets/manchester.png"
-import supercontest from "../assets/supercontest.jpg"
+import barclay from "../assets/barclay.png";
+import manchester from "../assets/manchester.png";
+import supercontest from "../assets/supercontest.jpg";
+import tottenham from "../assets/tottenham.jpg";
+import ControlledCarousel from "../components/carousel";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import FormControl from "react-bootstrap/FormControl";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 var axios = require("axios");
 class Home extends Component {
@@ -15,60 +22,24 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="logoBackground">
-        <img src={barclay} alt="" /> 
+      <div>
+        <Navbar bg="primary" variant="dark">
+          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+          <div className="logoBackground">
+            <img src={barclay} alt="" />
+          </div>
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          </Nav>
+          <Form inline>
+            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+            <Button variant="outline-light">Search</Button>
+          </Form>
+        </Navbar>
 
-        <div className="homepage">
-          <img src={manchester} alt="" />
-      </div>
-      <div className="sport">
-        <img src={supercontest} alt="background" />
-      </div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="#">
-          Sports Betting With Points {" "}
-        </a>
-
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item active">
-              <a className="nav-link" href="login-form.js">
-                Home <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="https://www.premierleague.com/fixtures">
-                Features
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="https://www.premierleague.com/fixtures">
-                Pricing
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="https://en.wikipedia.org/wiki/List_of_Premier_League_clubs"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown link
-              </a>
-              <div
-                className="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                  
-
-              </div>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <ControlledCarousel />
       </div>
     );
   }
