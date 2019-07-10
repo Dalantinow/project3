@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
+import ControlledCarousel from './carousel';
 
 
 class Home extends Component {
@@ -64,7 +65,9 @@ class Home extends Component {
             }}>
           </div>
           <Container>
+            <ControlledCarousel />
             <Row>
+
               <Col sm>
                 <Card bg="dark" text="white">
                 <Card.Body>
