@@ -4,6 +4,7 @@ import barclay from "../assets/barclay.png";
 import manchester from "../assets/manchester.png";
 import supercontest from "../assets/supercontest.jpg";
 import tottenham from "../assets/tottenham.jpg";
+import Carousel from 'react-bootstrap/Carousel'
 class ControlledCarousel extends React.Component {
     constructor(props, context) {
       super(props, context);
