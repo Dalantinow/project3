@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Carousel from 'react-bootstrap/Carousel'
 import barclay from "../assets/barclay.jpg";
 import liverpool from "../assets/liverpool.png";
+import mancity from "../assets/mancity.jpeg";
+import arsenal from "../assets/arsenal.jpeg";
+import chelsea from "../assets/chelsea.jpeg"
 // import manchester from "../assets/manchester.png";
 // import supercontest from "../assets/supercontest.jpg";
 import tottenham from "../assets/tottenham.jpg";
@@ -76,7 +79,29 @@ class ControlledCarousel extends React.Component {
               alt="Third slide"
             />
           </Carousel.Item>
-    
+
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={mancity}
+              alt="Third slide"
+            />
+          </Carousel.Item>
+
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={arsenal}
+              alt="Third slide"
+            />
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={chelsea}
+              alt="Third slide"
+            />
+          </Carousel.Item>
         </Carousel>
       );
     }
