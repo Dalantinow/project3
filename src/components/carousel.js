@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Carousel from 'react-bootstrap/Carousel'
-import barclay from "../assets/barclay.png";
-import manchester from "../assets/manchester.png";
-import supercontest from "../assets/supercontest.jpg";
+import barclay from "../assets/barclay.jpg";
+import liverpool from "../assets/liverpool.png";
+// import manchester from "../assets/manchester.png";
+// import supercontest from "../assets/supercontest.jpg";
 import tottenham from "../assets/tottenham.jpg";
 class ControlledCarousel extends React.Component {
     constructor(props, context) {
@@ -32,7 +33,7 @@ class ControlledCarousel extends React.Component {
           direction={direction}
           onSelect={this.handleSelect}
         >
-          <Carousel.Item>
+          {/* <Carousel.Item>
             <img
               className="d-block w-100"
               src={manchester}
@@ -41,8 +42,8 @@ class ControlledCarousel extends React.Component {
             <Carousel.Caption>
     
             </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
+          </Carousel.Item> */}
+          {/* <Carousel.Item>
             <img
               className="d-block w-100"
               src={supercontest}
@@ -52,18 +53,30 @@ class ControlledCarousel extends React.Component {
             <Carousel.Caption>
 
             </Carousel.Caption>
-          </Carousel.Item>
+          </Carousel.Item> */}
           <Carousel.Item>
             <img
               className="d-block w-100"
               src={tottenham}
               alt="Third slide"
             />
-  
-            <Carousel.Caption>
-    
-            </Carousel.Caption>
           </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={barclay}
+              alt="Third slide"
+            />
+            
+          </Carousel.Item>
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={liverpool}
+              alt="Third slide"
+            />
+          </Carousel.Item>
+    
         </Carousel>
       );
     }
