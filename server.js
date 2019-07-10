@@ -10,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 const cheerio = require("cheerio");
+require('dotenv').config()
 
 // Route requires
 

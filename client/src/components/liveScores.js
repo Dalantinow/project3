@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import moment from 'moment';
 
 
+
 class LiveScores extends Component {
     constructor(props) {
         super(props);
@@ -18,11 +19,15 @@ class LiveScores extends Component {
 
 
     componentDidMount() {
-        var apiToken = process.env.apiToken;
-        fetch('https://api.football-data.org/v2/competitions/PL/matches?season=2019&status=LIVE', {
-            headers: {'X-Auth-Token': '321b9e5504f34bfca96830247c9ff485'}
-        }).done(response => response.json())
+        var apiLiveKey = process.env.apiLiveKey;
+        var apiLiveSecret = process.env.apiLiveSecret;
+        fetch('https://livescore-api.com/api-client/scores/live.json?key=TsfFi64sOfpsBBjp&secret=fudIJKjCR8PAQChK5wpnDuPsJfVlQeK6',{
+            method: "GET",
+            mode: "no-cors"
+        })
+        .then(response => response.json())
             .then((result) => {
+                console.log(result)
                 this.setState({
                     isLoaded: true,
                     items: result.data
@@ -48,7 +53,7 @@ class LiveScores extends Component {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading Games...</div>;
-        } else if (items.matches === []) {
+        } else if (!items) {
             return <div>Sorry... No Games Right Now</div>;
         } else { 
             return (
@@ -63,16 +68,22 @@ class LiveScores extends Component {
                                     </Card.Body>
                                 </Card>
                                 <br></br>
-                                <div> {items.matches.map(item => (
+                                <div> {items.data.match.map(item => (
                                     <Card bg="dark" text="white">
                                         <Card.Body>
-                                            <Card.Title>{item.awayTeam.name} at {item.homeTeam.name}</Card.Title>
+                                            <Card.Title>{item.away_name} at {item.home_name}</Card.Title>
                                             <Card.Text>
-                                                {item.score.fullTime.awayTeam}     {item.score.fullTime.homeTeam}
+                                               Game Status: {item.status}
                                             </Card.Text>
+                                            
                                             <Card.Text>
-                                                Time (EST): {moment(item.utcDate).format('MMMM Do YYYY, h:mm:ss a')}
+                                                Score: {item.score}
                                             </Card.Text>
+
+                                            <Card.Text>
+                                                Time: {item.time}
+                                            </Card.Text>
+                                            
                                         </Card.Body>
                                     </Card>
                                 ))}

@@ -18,10 +18,10 @@ class ConcludedScores extends Component {
 
     componentDidMount() {
         var apiToken = process.env.apiToken;
-        fetch('https://api.football-data.org/v2/competitions/PL/matches?season=2019&status=LIVE', {
+        fetch('https://api.football-data.org/v2/competitions/CL/matches?season=2019&status=LIVE', {
             headers: {'X-Auth-Token': '321b9e5504f34bfca96830247c9ff485'}
         })
-        .done(response => response.json())
+        .then(response => response.json())
             .then((result) => {
                 this.setState({
                     isLoaded: true,
@@ -48,6 +48,7 @@ class ConcludedScores extends Component {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
             return <div>Loading Games...</div>;
+
         } else { 
             return (
                 <div>

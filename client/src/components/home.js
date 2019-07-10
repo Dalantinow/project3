@@ -21,7 +21,7 @@ class Home extends Component {
 
   componentDidMount() {
     var apiKey = process.env.apiKey;
-    fetch("https://api.the-odds-api.com/v3/odds?sport=soccer_epl&region=uk&mkt=h2h&apiKey=71bb5796ac3d48b345d68c07d65c5bbb")
+    fetch("https://api.the-odds-api.com/v3/odds?sport=soccer_usa_mls&region=us&mkt=h2h&apiKey=71bb5796ac3d48b345d68c07d65c5bbb")
       .then(res => res.json())
       .then(
         (result) => {
@@ -73,7 +73,7 @@ class Home extends Component {
                         League: {item.sport_nice}
                       </Card.Text>
                       <Card.Text>
-                        Time: {(item.commence_time)}
+                        Time: {moment(new Date(parseInt(item.commence_time * 1000))).format('MMMM Do YYYY, h:mm a')}
                       </Card.Text>
                       <Card.Subtitle>Bet On:  </Card.Subtitle>
                       <Button href="#" variant="outline-dark">{item.teams[0]}</Button>
