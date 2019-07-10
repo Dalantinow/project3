@@ -11,6 +11,7 @@
     "bootstrap": "^4.3.1",
     "bower": "^1.8.8",
     "cheerio": "^1.0.0-rc.3",
+    "carousel": "0.0.3",
     "connect-mongo": "^2.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
