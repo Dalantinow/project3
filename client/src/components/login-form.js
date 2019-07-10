@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-import axios from 'axios'
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 class LoginForm extends Component {
     constructor() {
@@ -54,46 +57,34 @@ class LoginForm extends Component {
         } else {
             return (
                 <div>
-                    <h4>Login</h4>
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="username">Username</label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    placeholder="Username"
-                                    value={this.state.username}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group">
-                            <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="password">Password: </label>
-                            </div>
-                            <div className="col-3 col-mr-auto">
-                                <input className="form-input"
-                                    placeholder="password"
-                                    type="password"
-                                    name="password"
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                />
-                            </div>
-                        </div>
-                        <div className="form-group ">
-                            <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
+                 	<Form>
+						<Col sm={5}>
+							<Form.Group controlId="formBasicEmail">
+								<Form.Label>Email address</Form.Label>
+								<Form.Control
+									type="username"
+									placeholder="Enter email"
+									id="username"
+									name="username"
+									value={this.state.username}
+									onChange={this.handleChange} />
+							</Form.Group>
 
-                                onClick={this.handleSubmit}
-                                type="submit">Login</button>
-                        </div>
-                    </form>
+							<Form.Group controlId="formBasicPassword">
+								<Form.Label>Password</Form.Label>
+								<Form.Control
+									placeholder="Password"
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+							</Form.Group>
+						</Col>
+						<Button onClick={this.handleSubmit} variant="dark" type="submit">
+							Submit
+  						</Button>
+					</Form>
                 </div>
             );
         };

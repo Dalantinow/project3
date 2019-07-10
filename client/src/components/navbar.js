@@ -3,6 +3,9 @@ import '../App.css';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Button from 'react-bootstrap/Button';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
@@ -36,40 +39,34 @@ class Navjawn extends Component {
         if (loggedIn === true) {
             return (
                 <div>
-                    <Navbar bg="dark" variant="dark" expand="lg">
-                        <Navbar.Brand href="/">UBetcha</Navbar.Brand>
-                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                        <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="mr-auto">
-                                <div>
-                                    <Nav.Link href="/" onClick={this.logout}>Logout</Nav.Link>
-                                    <Nav.Link href="/news">News</Nav.Link>
-                                    <Nav.Link href="/scores">Scores</Nav.Link>
-                                    <Nav.Link href="/bets">Your Bets</Nav.Link>
-                                </div>
-                            </Nav>
-                        </Navbar.Collapse>
+                    <Navbar bg="dark" variant="dark">
+                        <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
+                        <Nav className="mr-auto">
+                            <DropdownButton variant="outline-info" id="dropdown-basic-button" title="Scores">
+                                <Dropdown.Item href="/liveScores">Live</Dropdown.Item>
+                                <Dropdown.Item href="/concludedscores">Concluded</Dropdown.Item>
+                            </DropdownButton>
+                            <Button href="/news" variant="outline-info">News</Button>
+                            <Button href="/account" variant="outline-info">Account</Button>
+                            <Button href="/" onClick={this.logout} variant="outline-info">Logout</Button>
+                        </Nav>
                     </Navbar>
                 </div>
             )
         }
         return (
             <div>
-        
-                <Navbar bg="dark" variant="dark" expand="lg">
-                    <Navbar.Brand href="#home">UBetcha</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto">
-                            <div>
-                                <Nav.Link href="/login">Log In</Nav.Link>
-                                <Nav.Link href="/signup">Sign Up</Nav.Link>
-                                <Nav.Link href="/news">News</Nav.Link>
-                                <Nav.Link href="/scores">Scores</Nav.Link>
-                            </div>
-
-                        </Nav>
-                    </Navbar.Collapse>
+                <Navbar bg="dark" variant="dark">
+                    <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <DropdownButton variant="outline-info" id="dropdown-basic-button" title="Scores">
+                            <Dropdown.Item href="/livescores">Live</Dropdown.Item>
+                            <Dropdown.Item href="concludedscores">Concluded</Dropdown.Item>
+                        </DropdownButton>
+                        <Button href="/news" variant="outline-info">News</Button>
+                        <Button href="/login" variant="outline-info">Log In</Button>
+                        <Button href="/signup" variant="outline-info">Sign Up</Button>
+                    </Nav>
                 </Navbar>
             </div>
 

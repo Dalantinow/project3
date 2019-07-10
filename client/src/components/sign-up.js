@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
-import Home from "./home";
-import LoginForm from "./login-form";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import { Redirect } from 'react-router-dom';
+
+
 class Signup extends Component {
 	constructor() {
 		super()
@@ -31,8 +34,8 @@ class Signup extends Component {
 			password: this.state.password
 		})
 			.then(response => {
-				console.log(response)
-				if (!response.data.errmsg) {
+				console.log(response.data.error)
+				if (!response.data.error) {
 					console.log('successful signup')
 					this.setState({ //redirect to login page
 						redirectTo: '/login'
@@ -49,68 +52,52 @@ class Signup extends Component {
 
 
 	render() {
-		return (
-			<div className="SignupForm">
-				<h4>Sign up</h4>
-				<form className="form-horizontal">
-					<div className="form-group">
-						<div className="col-1 col-ml-auto">
-							<label className="form-label" htmlFor="username">Username</label>
-						</div>
-						<div className="col-3 col-mr-auto">
-							<input className="form-input"
-								type="text"
-								id="username"
-								name="username"
-								placeholder="Username"
-								value={this.state.username}
-								onChange={this.handleChange}
-							/>
-						</div>
-					</div>
-					<div className="form-group">
-						<div className="col-1 col-ml-auto">
-							<label className="form-label" htmlFor="password">Password: </label>
-						</div>
-						<div className="col-3 col-mr-auto">
-							<input className="form-input"
-								placeholder="password"
-								type="password"
-								name="password"
-								value={this.state.password}
-								onChange={this.handleChange}
-							/>
-						</div>
-					</div>
-					<div className="form-group ">
-						<div className="col-7"></div>
-						<button
-							className="btn btn-primary col-1 col-mr-auto"
-							onClick={this.handleSubmit}
-							type="submit"
-						>Sign up</button>
-					</div>
-				</form>
-				<Route
-					exact path="/"
-					component={Home} />
-				<Route
-					path="/login"
-					render={() =>
-						<LoginForm
-							updateUser={this.updateUser}
-						/>}
-				/>
-				<Route
-					path="/signup"
-					render={() =>
-						<Signup />}
-				/>
+		if (this.state.redirectTo) {
+            return <Redirect to={{ pathname: this.state.redirectTo }} />
+        } else {
+            return (
+			<div>
+				<div className="SignupForm">
+					<Form>
+						<Col sm={5}>
+							<Form.Group controlId="formBasicEmail">
+								<Form.Label>Email address</Form.Label>
+								<Form.Control
+									type="username"
+									placeholder="Enter email"
+									id="username"
+									name="username"
+									value={this.state.username}
+									onChange={this.handleChange} />
+								<Form.Text className="text-muted">
+									We'll never share your email with anyone else.
+    						</Form.Text>
+							</Form.Group>
+
+							<Form.Group controlId="formBasicPassword">
+								<Form.Label>Password</Form.Label>
+								<Form.Control
+									placeholder="Password"
+									type="password"
+									name="password"
+									value={this.state.password}
+									onChange={this.handleChange}
+								/>
+							</Form.Group>
+						</Col>
+						<Button onClick={this.handleSubmit} variant="dark" type="submit">
+							Submit
+  						</Button>
+					</Form>
+
+				</div>
+			
 
 			</div>
-
+		
 		)
 	}
+}
 }
 
 export default Signup
