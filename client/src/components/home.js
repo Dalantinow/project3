@@ -41,13 +41,10 @@ class Home extends Component {
         }
 
       );
-    console.log("j")
   };
 
 
   render() {
-
-    let imgUrl = '../images/smoke.jpg';
     const { error, isLoaded, items } = this.state;
     if (error) {
       return <div>Error: {error.message}</div>;
@@ -56,14 +53,6 @@ class Home extends Component {
     } else {
       return (
         <div>
-          <div className='Component-Bg'
-            style={{
-              backgroundImage: 'url(' + imgUrl + ')',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center center',
-              backgroundRepeat: 'no-repeat',
-            }}>
-          </div>
           <Container>
             <ControlledCarousel />
             <Row>

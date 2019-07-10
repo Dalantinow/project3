@@ -4,6 +4,8 @@ import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 
 
@@ -38,14 +40,17 @@ class Navjawn extends Component {
             return (
                 <div>
                     <Navbar bg="dark" variant="dark">
-                    <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
-                    <Nav className="mr-auto">
-                    <Button href="/news" variant="outline-info">News</Button>
-                    <Button href="/scores" variant="outline-info">Scores</Button>
-                    <Button href="/account" variant="outline-info">Account</Button>
-                    <Button href="/" onClick={this.logout} variant="outline-info">Logout</Button>
-                    </Nav>
-                </Navbar>
+                        <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
+                        <Nav className="mr-auto">
+                            <DropdownButton variant="outline-info" id="dropdown-basic-button" title="Scores">
+                                <Dropdown.Item href="/liveScores">Live</Dropdown.Item>
+                                <Dropdown.Item href="/concludedscores">Concluded</Dropdown.Item>
+                            </DropdownButton>
+                            <Button href="/news" variant="outline-info">News</Button>
+                            <Button href="/account" variant="outline-info">Account</Button>
+                            <Button href="/" onClick={this.logout} variant="outline-info">Logout</Button>
+                        </Nav>
+                    </Navbar>
                 </div>
             )
         }
@@ -54,10 +59,13 @@ class Navjawn extends Component {
                 <Navbar bg="dark" variant="dark">
                     <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
                     <Nav className="mr-auto">
-                    <Button href="/news" variant="outline-info">News</Button>
-                    <Button href="/scores" variant="outline-info">Scores</Button>
-                    <Button href="/login" variant="outline-info">Log In</Button>
-                    <Button href="/signup" variant="outline-info">Sign Up</Button>
+                        <DropdownButton variant="outline-info" id="dropdown-basic-button" title="Scores">
+                            <Dropdown.Item href="/livescores">Live</Dropdown.Item>
+                            <Dropdown.Item href="concludedscores">Concluded</Dropdown.Item>
+                        </DropdownButton>
+                        <Button href="/news" variant="outline-info">News</Button>
+                        <Button href="/login" variant="outline-info">Log In</Button>
+                        <Button href="/signup" variant="outline-info">Sign Up</Button>
                     </Nav>
                 </Navbar>
             </div>

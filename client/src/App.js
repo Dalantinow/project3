@@ -6,6 +6,8 @@ import Signup from './components/sign-up';
 import LoginForm from './components/login-form';
 import Navjawn from './components/navbar';
 import Home from './components/home';
+import LiveScores from './components/liveScores';
+import ConcludedScores from './components/concludedScores'
 
 
 class App extends Component {
@@ -76,6 +78,16 @@ class App extends Component {
           path="/signup"
           render={() =>
             <Signup />}
+        />
+         <Route
+          path="/livescores"
+          render={() =>
+            <LiveScores />}
+        />
+         <Route
+          path="/concludedscores"
+          render={() =>
+            <ConcludedScores />}
         />
         
         <script src="https://unpkg.com/react/umd/react.production.js" crossorigin />
