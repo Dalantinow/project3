@@ -10,10 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require("cors");
 const cheerio = require("cheerio");
-require('dotenv').config()
+require('dotenv').config();
 const axios = require("axios");
 const Article = require("./models/Article");
 const Thumbnail = require("./models/Thumbnail");
+const path = require("path");
 
 // Route requires
 
@@ -21,6 +22,8 @@ app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "client", "build")))
+
 app.use(cors());
 const user = require('./routes/user')
 // MIDDLEWARE
@@ -120,6 +123,10 @@ app.get("/game/:id", (req, res) => {
 	dbConnection.Game.find().then(dbGame => res.json(dbGame))
 		.catch(err => res.json(err))
 })
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 // Starting Server 
 app.listen(PORT, () => {

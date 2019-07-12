@@ -44,7 +44,8 @@ class Home extends Component {
     const league = event.target.innerHTML;
     this.setState({ league })
     let oddsApiCall = (sport) => {
-      fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=0cf960a0668ac664d33731f63e58304d")
+      apiKey = process.env.apiKey
+      fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=" + apiKey)
         .then(res => res.json())
         .then(
           (result) => {

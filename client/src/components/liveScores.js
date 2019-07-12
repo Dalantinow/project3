@@ -19,9 +19,9 @@ class LiveScores extends Component {
 
 
     componentDidMount() {
-        // var apiLiveKey = process.env.apiLiveKey;
-        // var apiLiveSecret = process.env.apiLiveSecret;
-        axios.get('https://livescore-api.com/api-client/scores/live.json?key=TsfFi64sOfpsBBjp&secret=fudIJKjCR8PAQChK5wpnDuPsJfVlQeK6',{
+        var apiLiveKey = process.env.apiLiveKey;
+        var apiLiveSecret = process.env.apiLiveSecret;
+        axios.get('https://livescore-api.com/api-client/scores/live.json?key='  + apiLiveKey + '&secret=' + apiLiveSecret,{
             method: "GET",
             mode: "no-cors",
             headers: {
