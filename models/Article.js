@@ -2,12 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 let ArticleSchema = new Schema({
     title: {
-        type: String,
-        required: true
+        type: String
+      
     },
     link: {
-        type: String,
-        required: true
+        type: String
+        
+    },
+    thumbnail: {
+        type: String
     }
 });
 

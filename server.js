@@ -12,7 +12,8 @@ const cors = require("cors");
 const cheerio = require("cheerio");
 require('dotenv').config()
 const axios = require("axios");
-const Article = require("./models/Article")
+const Article = require("./models/Article");
+const Thumbnail = require("./models/Thumbnail");
 
 // Route requires
 
@@ -31,8 +32,6 @@ app.use(
 )
 app.use(bodyParser.json())
 
-
-// Sessions
 app.use(
 	session({
 		secret: 'fraggle-rock', //pick a random string to make the hash that is generated secure
@@ -47,50 +46,71 @@ app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
 
 // Scraping
-app.get("/scrape", (req, res) => {
-	axios.get("https://old.reddit.com/r/sports").then(response => {
 
+app.get("/scrape", (req, res) => {
+
+	axios.get("https://old.reddit.com/r/sports").then(response => {
+		Article.deleteMany()
+			.then(result => console.log(`Deleted ${result.deletedCount} item(s).`))
+			.catch(err => console.error(`Delete failed with error: ${err}`))
 		let $ = cheerio.load(response.data);
 		let results = {};
-		for (var i = 0; i < $.length; i++) {
-
-
+		for (var i = 0; i < 1; i++) {
 			$("p.title").each(function (i, element) {
 				results.title = $(this).children("a").text();
 				results.link = $(this).children("a").attr("href");
-				// console.log(dbConnection.Article)
-				// dbConnection.Article.findOne({title: results.title, link: results.link}, function (err, data) {
-				// 	if(err) {
-				// 		console.log(err)
-				// 	} else {
-				// 		if (data === null) {
-				// 			dbConnection.Article.create(result)
-				// 			.then(dbArticle => console.log(dbArticle))
-				// 			.catch(err => console.log(err))
-				// 		}
-				// 	}
-				// })
-
-				const newArticle = new Article({
-					title: results.title,
-					link: results.link
+				// $("a.thumbnail").each(function (i, element) {
+				// 	results.thumbnail = $(this).children("img").attr("src");
+					console.log(results.title)
+					const newArticle = new Article({
+						title: results.title,
+						link: results.link,
+						thumbnail: results.thumbnail
+					})
+					newArticle.save((err, savedArticle) => {
+						if (err) return res.json(err)
+					})
 				})
-
-				newArticle.save((err, savedArticle) => {
-					if (err) return res.json(err)
-					res.json(savedArticle)
-				})
-			});
+			// })
 		}
+		Article.find().then(articles => {
+			res.json(articles)
+		});
 	});
 });
 
+// app.get("/thumbnail", (req, res) => {
+// 	axios.get("https://old.reddit.com/r/sports").then(response => {
+// 		Thumbnail.deleteMany()
+// 			.then(result => console.log(`Deleted ${result.deletedCount} item(s).`))
+// 			.catch(err => console.error(`Delete failed with error: ${err}`))
+// 		let $ = cheerio.load(response.data);
+// 		let results = {};
+// 		for (var i = 0; i < 1; i++) {
+// 			$("a.thumbnail").each(function (i, element) {
+// 				results.url = $(this).children("img").attr("src");
+// 				const newThumbnail = new Thumbnail({
+// 					url: results.url
+// 				})
+// 				newThumbnail.save((err, savedThumbnail) => {
+// 					if (err) return res.json(err)
+// 				})
+
+// 			});
+
+// 		};
+// 			Thumbnail.find().then(thumbnails => {
+// 					res.json(thumbnails)
+// 				});
+// 	})
+
+// })
 
 // Routes
 app.use('/user', user)
 
 app.get("/articles", (req, res) => {
-	dbConnection.Article.find().then(dbArticle =>
+	Article.find().then(dbArticle =>
 		res.json(dbArticle))
 	console.log(dbArticle)
 		.catch(err => res.json(err));

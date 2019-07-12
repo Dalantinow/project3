@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 let BidSchema = new Schema({
-    teamOne: {
+    gameId: Number,
+    gameOdds: Object,
+    commencementTime: Number,
+    teamOneBid: {
         type: Object,
-        required: ["teamName", "userId", "bidAmount", "gameId"],
         properties: {
             teamName: String,
             userId: Number,
+            email: String,
             bidAmount: {
                 type: Number,
                 min: 1
@@ -14,12 +17,12 @@ let BidSchema = new Schema({
             gameId: Number
         },
     },
-    teamTwo: {
+    teamTwoBid: {
         type: Object,
-        required: ["teamName", "userId", "bidAmount", "gameId"],
         properties: {
             teamName: String,
             userId: Number,
+            email: String,
             bidAmount: {
                 type: Number,
                 min: 1
@@ -30,5 +33,5 @@ let BidSchema = new Schema({
 
 });
 
-const Bid = mongoose.model("Bid", ArticleSchema);
+const Bid = mongoose.model("Bid", BidSchema);
 module.exports = Bid;
