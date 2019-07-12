@@ -17,8 +17,8 @@ class ConcludedScores extends Component {
 
 
     componentDidMount() {
-        var apiToken = process.env.apiToken;
-        fetch('https://api.football-data.org/v2/competitions/CL/matches?season=2019&status=LIVE', {
+        // var apiToken = process.env.apiToken;
+        fetch('https://api.football-data.org/v2/competitions/CL/matches?season=2019&status=FINISHED', {
             headers: {'X-Auth-Token': '321b9e5504f34bfca96830247c9ff485'}
         })
         .then(response => response.json())

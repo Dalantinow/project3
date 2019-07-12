@@ -1,6 +1,8 @@
 
-/* .App {
+ .App {
   text-align: center;
+  background-color: black
+ 
 }
 
 .App-logo {
@@ -19,10 +21,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -31,35 +29,55 @@
     transform: rotate(360deg);
 
   }
-} */
-.aecom-single-wrapper .left-sidebar-container {
-  width: 250px;
 }
-.aecom-single-wrapper .left-sidebar-container {
-  float: left;
-  min-height: 1px;
-  width: 185px;
+.MDBDropdown{
+  text-align: center;
+  margin: auto
 }
-
-#aecom-share-box-container h4 {
-  font-size: 0.9em;
-  margin-bottom: 0px;
+.jawn {
+  margin-bottom: 20px
 }
-
-.left-floating-sidebar {
-  background-color: #FFF;
-  padding: 20px 10px;
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
 }
-
-h4 {
-  font-size: 24px;
+Button.home-button {
+ float: center;
+ color: black
+ 
 }
-a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-  text-decoration: underline;
+#upcoming-games {
+  font-size: 80
 }
-.articles {
-  float: right
+body {
+  background-color: black
 }
 
+
+
+@media only screen and (min-width: 600px) {
+  Col.col-1 {
+    width: 100%
+  }
+  Col.col-2 {
+    display: none
+  }
+} 
+
+
+@media only screen and (min-width: 768px) {
+  
+  .col-2, .col-1 {
+    width: 41.66%
+  }
+} 
+
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}

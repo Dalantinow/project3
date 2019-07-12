@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import moment from 'moment';
+import axios from 'axios';
 
 
 
@@ -21,9 +21,13 @@ class LiveScores extends Component {
     componentDidMount() {
         var apiLiveKey = process.env.apiLiveKey;
         var apiLiveSecret = process.env.apiLiveSecret;
-        fetch('https://livescore-api.com/api-client/scores/live.json?key=TsfFi64sOfpsBBjp&secret=fudIJKjCR8PAQChK5wpnDuPsJfVlQeK6',{
+        axios.get('https://livescore-api.com/api-client/scores/live.json?key='  + apiLiveKey + '&secret=' + apiLiveSecret,{
             method: "GET",
-            mode: "no-cors"
+            mode: "no-cors",
+            headers: {
+                    'Content-Type': 'application/json',
+                    "Accept": 'application/json'
+            }
         })
         .then(response => response.json())
             .then((result) => {
