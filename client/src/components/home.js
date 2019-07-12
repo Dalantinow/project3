@@ -14,7 +14,8 @@ class Home extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      items: [],
+      articles: []
     }
   };
 
@@ -41,6 +42,22 @@ class Home extends Component {
         }
 
       );
+    fetch("http://localhost:3001/scrape")
+      .then(res => res.json())
+      .then((result) => {
+        this.setState({
+          isLoaded: true,
+          articles: result.data
+        });
+      },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          })
+        }
+      )
+
   };
 
 
@@ -59,9 +76,9 @@ class Home extends Component {
 
               <Col sm>
                 <Card bg="dark" text="white">
-                <Card.Body>
-                <Card.Title>Upcoming Games</Card.Title>
-                </Card.Body>
+                  <Card.Body>
+                    <Card.Title>Upcoming Games</Card.Title>
+                  </Card.Body>
                 </Card>
                 <br></br>
                 <div> {items.map(item => (
@@ -85,21 +102,23 @@ class Home extends Component {
                 </div>
               </Col>
               <Col sm>
-              <Card bg="dark" text="white">
-                <Card.Body>
-                <Card.Title>Sports News</Card.Title>
-                </Card.Body>
-                 
-                </Card>
-                <br></br>
-                <div className="articles"></div>
                 <Card bg="dark" text="white">
                   <Card.Body>
-                    <Card.Title>AHHHH</Card.Title>
+                    <Card.Title>Sports News</Card.Title>
+                  </Card.Body>
+
+                </Card>
+                <br></br>
+                <div> { articles.map(article => ( 
+                <Card bg="dark" text="white">
+                  <Card.Body>
+                    <Card.Title>{article.title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted"></Card.Subtitle>
 
                   </Card.Body>
                 </Card>
+                ))}
+                </div>
               </Col>
             </Row>
           </Container>
@@ -109,7 +128,7 @@ class Home extends Component {
   };
 };
 
-  
+
 
 export default Home;
 

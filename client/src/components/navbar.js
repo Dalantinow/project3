@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import '../App.css';
 import axios from 'axios';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import Dropdown from 'react-bootstrap/Dropdown';
-
-
+import NavItem from 'react-bootstrap/NavItem';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 
 class Navjawn extends Component {
     constructor() {
@@ -42,13 +42,15 @@ class Navjawn extends Component {
                     <Navbar bg="dark" variant="dark">
                         <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
                         <Nav className="mr-auto">
-                            <DropdownButton variant="outline-info" id="dropdown-basic-button" title="Scores">
-                                <Dropdown.Item href="/liveScores">Live</Dropdown.Item>
-                                <Dropdown.Item href="/concludedscores">Concluded</Dropdown.Item>
-                            </DropdownButton>
-                            <Button href="/news" variant="outline-info">News</Button>
-                            <Button href="/account" variant="outline-info">Account</Button>
-                            <Button href="/" onClick={this.logout} variant="outline-info">Logout</Button>
+                            <ButtonToolbar>
+                                <DropdownButton noCaret id="dropdown-no-caret" variant="warning" id="dropdown-basic-button" title="Scores">
+                                    <Dropdown.Item href="/liveScores">Live</Dropdown.Item>
+                                    <Dropdown.Item href="/concludedscores">Concluded</Dropdown.Item>
+                                </DropdownButton>
+                                <Nav.Link variant="warning" href="/news">News</Nav.Link>
+                                <Button href="/account" variant="warning">Account</Button>
+                                <Button href="/" onClick={this.logout} variant="warning">Logout</Button>
+                            </ButtonToolbar>
                         </Nav>
                     </Navbar>
                 </div>
@@ -59,13 +61,17 @@ class Navjawn extends Component {
                 <Navbar bg="dark" variant="dark">
                     <Navbar.Brand href="/">Ubetcha</Navbar.Brand>
                     <Nav className="mr-auto">
-                        <DropdownButton variant="outline-info" id="dropdown-basic-button" title="Scores">
-                            <Dropdown.Item href="/livescores">Live</Dropdown.Item>
-                            <Dropdown.Item href="concludedscores">Concluded</Dropdown.Item>
-                        </DropdownButton>
-                        <Button href="/news" variant="outline-info">News</Button>
-                        <Button href="/login" variant="outline-info">Log In</Button>
-                        <Button href="/signup" variant="outline-info">Sign Up</Button>
+                        <ButtonToolbar>
+                            <DropdownButton noCaret id="dropdown-no-caret" variant="warning" id="dropdown-basic-button" title="Scores">
+                                <Dropdown.Item href="/livescores">Live</Dropdown.Item>
+                                <Dropdown.Item href="concludedscores">Concluded</Dropdown.Item>
+                            </DropdownButton>
+                            <Button href="/news" variant="warning">News</Button>
+                        </ButtonToolbar>
+                        <Nav pullRight>
+                            <Button href="/login" variant="warning">Log In</Button>
+                            <Button href="/signup" variant="warning">Sign Up</Button>
+                        </Nav>
                     </Nav>
                 </Navbar>
             </div>
