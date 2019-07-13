@@ -7,10 +7,14 @@ import LoginForm from './components/login-form';
 import Navjawn from './components/navbar';
 import Home from './components/home';
 import LiveScores from './components/liveScores';
-import Bid from './components/bid'
+import GamePage from './components/game';
 import ConcludedScores from './components/concludedScores';
 import "./App.css";
-require("dotenv").config();
+import dotenv from "dotenv";
+
+
+dotenv.config();
+
 
 class App extends Component {
   constructor() {
@@ -89,9 +93,9 @@ class App extends Component {
             <ConcludedScores />}
         />
         <Route
-          path="/bid/:bid._id"
+          path="/bid/:id"
           render={() =>
-            <Bid />}
+            <GamePage/>}
         />
 
           <script src="https://unpkg.com/react/umd/react.production.js" crossorigin />

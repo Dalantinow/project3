@@ -51,7 +51,7 @@ class ControlledCarousel extends React.Component {
   }
 
   render() {
-    const { index, direction, articles, isLoaded } = this.state;
+    const { index, direction, isLoaded } = this.state;
     if (!isLoaded) {
       return <Spinner animation="grow" variant="warning" />
     } else {

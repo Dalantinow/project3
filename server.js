@@ -14,6 +14,7 @@ require('dotenv').config();
 const axios = require("axios");
 const Article = require("./models/Article");
 const Thumbnail = require("./models/Thumbnail");
+const Bid = require("./models/Bid")
 const path = require("path");
 
 // Route requires
@@ -51,7 +52,6 @@ app.use(passport.session()) // calls the deserializeUser
 // Scraping
 
 app.get("/scrape", (req, res) => {
-
 	axios.get("https://old.reddit.com/r/sports").then(response => {
 		Article.deleteMany()
 			.then(result => console.log(`Deleted ${result.deletedCount} item(s).`))
@@ -64,16 +64,15 @@ app.get("/scrape", (req, res) => {
 				results.link = $(this).children("a").attr("href");
 				// $("a.thumbnail").each(function (i, element) {
 				// 	results.thumbnail = $(this).children("img").attr("src");
-					console.log(results.title)
-					const newArticle = new Article({
-						title: results.title,
-						link: results.link,
-						thumbnail: results.thumbnail
-					})
-					newArticle.save((err, savedArticle) => {
-						if (err) return res.json(err)
-					})
+				const newArticle = new Article({
+					title: results.title,
+					link: results.link,
+					thumbnail: results.thumbnail
 				})
+				newArticle.save((err, savedArticle) => {
+					if (err) return res.json(err)
+				})
+			})
 			// })
 		}
 		Article.find().then(articles => {
@@ -81,59 +80,52 @@ app.get("/scrape", (req, res) => {
 		});
 	});
 });
-
-
-// app.get("/thumbnail", (req, res) => {
-// 	axios.get("https://old.reddit.com/r/sports").then(response => {
-// 		Thumbnail.deleteMany()
-// 			.then(result => console.log(`Deleted ${result.deletedCount} item(s).`))
-// 			.catch(err => console.error(`Delete failed with error: ${err}`))
-// 		let $ = cheerio.load(response.data);
-// 		let results = {};
-// 		for (var i = 0; i < 1; i++) {
-// 			$("a.thumbnail").each(function (i, element) {
-// 				results.url = $(this).children("img").attr("src");
-// 				const newThumbnail = new Thumbnail({
-// 					url: results.url
-// 				})
-// 				newThumbnail.save((err, savedThumbnail) => {
-// 					if (err) return res.json(err)
-// 				})
-
-// 			});
-
-// 		};
-// 			Thumbnail.find().then(thumbnails => {
-// 					res.json(thumbnails)
-// 				});
-// 	})
-
-// })
-
 // Routes
 app.use('/user', user)
 
 app.get("/articles", (req, res) => {
 	Article.find().then(dbArticle =>
 		res.json(dbArticle))
-	console.log(dbArticle)
 		.catch(err => res.json(err));
 });
 
-app.post("/bid", function(req, res) {
-    dbConnection.Bid.create(req.body).then(function(data) {
-      res.json(data);
-    });
-  });
+app.get("/bid", function (req, res) {
+	Bid.find((err, data) => {
+		if (err) {
+			console.log(err);
+		} else {
+			res.json(data)
+		}
+	})
+})
+
+app.post("/bid", function (req, res) {
+	const newBid = new Bid({
+		teamOneName: req.body.home,
+		teamOneNumber: 1,
+		teamTwoName: req.body.away,
+		teamTwoNumber: 2,
+		commencementTime: req.body.time
+	})
+	newBid.save((err, savedBid) => {
+		if (err) return res.json(err)
+	})
+	Bid.create(req.body).then(function (data) {
+		res.json(data);
+	});
+
+});
 
 app.get("/bid/:id", (req, res) => {
-	dbConnection.Bid.findOne({ where: { id: req.params.id} }).then(function(data) {
+	console.log(req.body)
+	Bid.findOne({_id: req.params.id}).then(function (data) {
 		res.json(data);
+		
 	})
 })
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 // Starting Server 

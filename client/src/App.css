@@ -76,9 +76,22 @@ body {
     width: 41.66%
   }
 } 
-
+.bidbutton {
+  
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 10px;
+  border-radius: 50%;
+  float: center
+}
 .awayhome {
   margin: 30px
+}
+.buttonbar {
+  text-align: center
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */

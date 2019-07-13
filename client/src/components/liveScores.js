@@ -5,6 +5,10 @@ import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 
+import dotenv from "dotenv";
+
+
+dotenv.config();
 
 
 class LiveScores extends Component {

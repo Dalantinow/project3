@@ -27,38 +27,36 @@ class Home extends Component {
       league: ""
     };
   };
- 
+
   componentDidMount() {
     Axios.get("http://localhost:3001/scrape")
-
-    .then((result) => {
-      this.setState({
-        isLoaded: true,
-        articles: result.data
-      });
-
-    },
-      (error) => {
+      .then((result) => {
         this.setState({
           isLoaded: true,
-          error
+          articles: result.data
         });
-      });
+
+      },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        });
   }
   onClickHandler = event => {
     const league = event.target.innerHTML;
     this.setState({ league })
     let oddsApiCall = (sport) => {
       // apiKey = process.env.apiKey
-      
       // fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=" + apiKey )
-      fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=0cf960a0668ac664d33731f63e58304d" )
-        .then(res => res.json())
+      fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=0cf960a0668ac664d33731f63e58304d")
+        .then(res => 
+          res.json())
         .then(
           (result) => {
-            console.log(result.data);
             this.setState({
-         items: result.data,
+              items: result.data,
               isLoaded: true
             });
           },
@@ -72,16 +70,16 @@ class Home extends Component {
         oddsApiCall("americanfootball_ncaaf");
         break;
       case "MMA":
-          oddsApiCall("mma_mixed_martial_arts");
-      break;
+        oddsApiCall("mma_mixed_martial_arts");
+        break;
       case "MLS":
         oddsApiCall("soccer_usa_mls");
         break;
       case "MLB":
         oddsApiCall("baseball_mlb");
         break;
-        default:
-          console.log("something went horribly wrong...");
+      default:
+        console.log("something went horribly wrong...");
     };
   };
   render() {
@@ -103,7 +101,7 @@ class Home extends Component {
                   <Card.Body>
                     <ButtonToolbar>
                       <MDBDropdown className="MBDDropdown">
-                        <MDBDropdownToggle id ="upcoming-games"className="home-button" caret color="warning">
+                        <MDBDropdownToggle id="upcoming-games" className="home-button" caret color="warning">
                           Upcoming Games
                         </MDBDropdownToggle>
                         <MDBDropdownMenu basic>
@@ -118,19 +116,21 @@ class Home extends Component {
                   </Card.Body>
                 </Card>
                 <br></br>
-                <div> {items.map(item => (
+                <div> {items.map((item, index) => (
                   <Card className="jawn" bg="dark" text="white">
                     <Card.Body>
-                      <Card.Title>{item.teams[0]} vs {item.teams[1]}</Card.Title>
+                      <Card.Title className="teamone">{item.teams[0]}</Card.Title>
+                      <Card.Title>VS</Card.Title>
+                      <Card.Title className="teamtwo">{item.teams[1]}</Card.Title>
                       <Card.Subtitle className="mb-2 text-muted">{item.home_team} at Home</Card.Subtitle>
                       <Card.Text>
                         League: {item.sport_nice}
                       </Card.Text>
-                      <Card.Text>
+                      <Card.Text className="time">
                         Time: {moment(new Date(parseInt(item.commence_time * 1000))).format('MMMM Do YYYY, h:mm a')}
                       </Card.Text>
                       <Card.Subtitle>Bet On:  </Card.Subtitle>
-                     <BidButtons />
+                      <BidButtons id={index} away={item.teams[0]} home={item.teams[1]} time={item.commence_time} />
 
                     </Card.Body>
                   </Card>
@@ -140,7 +140,7 @@ class Home extends Component {
               <Col className="col-2" sm>
                 <Card bg="dark" text="white">
                   <Card.Body>
-                  {/*<ButtonToolbar>
+                    {/*<ButtonToolbar>
                        <MDBDropdown className="MBDDropdown">
                         <MDBDropdownToggle id ="upcoming-games" className="home-button" caret color="warning">
                           Upcoming Games
@@ -156,7 +156,7 @@ class Home extends Component {
                       </MDBDropdown>
                     </ButtonToolbar> */}
                     {/* Eventually want to change the params of the news scraper to fill requests for leagues */}
-                  <Card.Title>News</Card.Title>
+                    <Card.Title>News</Card.Title>
                   </Card.Body>
                 </Card>
                 <br></br>
@@ -178,6 +178,6 @@ class Home extends Component {
       )
     };
   };
- };
+};
 export default Home;
 
