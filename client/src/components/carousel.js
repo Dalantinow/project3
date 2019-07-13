@@ -1,12 +1,12 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel'
-import one from "../assets/1.jpg";
-import two from "../assets/2.JPG";
-import three from "../assets/3.jpg";
-import four from "../assets/4.jpg";
-import five from "../assets/5.jpg";
-import six from "../assets/6.jpg";
-import seven from "../assets/7.jpg";
+import one from "../assets/ball8.jpg";
+import two from "../assets/ball1.jpg";
+import three from "../assets/pirates.jpg";
+import four from "../assets/mma.jpg";
+import five from "../assets/ball6.jpg";
+import six from "../assets/bearsvpackers.jpg";
+import seven from "../assets/football.jpg";
 import Axios from "axios";
 import Spinner from "react-bootstrap/Spinner"
 
@@ -51,7 +51,7 @@ class ControlledCarousel extends React.Component {
   }
 
   render() {
-    const { index, direction, articles, isLoaded } = this.state;
+    const { index, direction, isLoaded } = this.state;
     if (!isLoaded) {
       return <Spinner animation="grow" variant="warning" />
     } else {
