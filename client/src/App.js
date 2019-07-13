@@ -10,7 +10,7 @@ import LiveScores from './components/liveScores';
 import Bid from './components/bid'
 import ConcludedScores from './components/concludedScores';
 import "./App.css";
-
+require("dotenv").config();
 
 class App extends Component {
   constructor() {

@@ -10,6 +10,11 @@ import Axios from "axios";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Spinner from "react-bootstrap/Spinner";
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
+import BidButtons from "../components/bid";
+import dotenv from "dotenv";
+
+
+dotenv.config();
 
 class Home extends Component {
   constructor(props) {
@@ -44,8 +49,10 @@ class Home extends Component {
     const league = event.target.innerHTML;
     this.setState({ league })
     let oddsApiCall = (sport) => {
-      apiKey = process.env.apiKey
-      fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=" + apiKey)
+      // apiKey = process.env.apiKey
+      
+      // fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=" + apiKey )
+      fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=0cf960a0668ac664d33731f63e58304d" )
         .then(res => res.json())
         .then(
           (result) => {
@@ -123,10 +130,7 @@ class Home extends Component {
                         Time: {moment(new Date(parseInt(item.commence_time * 1000))).format('MMMM Do YYYY, h:mm a')}
                       </Card.Text>
                       <Card.Subtitle>Bet On:  </Card.Subtitle>
-                      <ButtonToolbar>
-                        <Button className="home-button" href="#" variant="warning">{item.teams[0]}</Button>
-                        <Button className="home-button" href="#" variant="warning">{item.teams[1]}</Button>
-                      </ButtonToolbar>
+                     <BidButtons />
 
                     </Card.Body>
                   </Card>
