@@ -61,16 +61,7 @@ class ControlledCarousel extends React.Component {
           direction={direction}
           onSelect={this.handleSelect}
         >
-          {/* <div> {articles.map(article => (
-            <Carousel.Item>
-              <img
-                className="d-block w-100"
-                src={article.thumbnail}
-                caption={article.title}
-              />
-            </Carousel.Item>
-          ))}
-          </div> */}
+       
           <Carousel.Item>
               <img
                 className="d-block w-100"

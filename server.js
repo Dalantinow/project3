@@ -82,6 +82,7 @@ app.get("/scrape", (req, res) => {
 	});
 });
 
+
 // app.get("/thumbnail", (req, res) => {
 // 	axios.get("https://old.reddit.com/r/sports").then(response => {
 // 		Thumbnail.deleteMany()
@@ -119,9 +120,16 @@ app.get("/articles", (req, res) => {
 		.catch(err => res.json(err));
 });
 
-app.get("/game/:id", (req, res) => {
-	dbConnection.Game.find().then(dbGame => res.json(dbGame))
-		.catch(err => res.json(err))
+app.post("/bid", function(req, res) {
+    dbConnection.Bid.create(req.body).then(function(data) {
+      res.json(data);
+    });
+  });
+
+app.get("/bid/:id", (req, res) => {
+	dbConnection.Bid.findOne({ where: { id: req.params.id} }).then(function(data) {
+		res.json(data);
+	})
 })
 
 app.get("*", (req, res) => {
