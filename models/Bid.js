@@ -1,36 +1,24 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 let BidSchema = new Schema({
-    gameId: Number,
     gameOdds: Object,
     commencementTime: Number,
-    teamOneBid: {
-        type: Object,
-        properties: {
-            teamName: String,
-            userId: Number,
-            email: String,
-            bidAmount: {
-                type: Number,
-                min: 1
-            },
-            gameId: Number
-        },
+    teamOneBidAmount: {
+        type: Number,
+        min: 1
     },
-    teamTwoBid: {
-        type: Object,
-        properties: {
-            teamName: String,
-            userId: Number,
-            email: String,
-            bidAmount: {
-                type: Number,
-                min: 1
-            },
-            gameId: Number
-        }
-    }
-
+    teamOneName: String,
+    teamOneId: Number,
+    teamOneBettorId: Number,
+    teamTwoBidAmount: {
+        type: Number,
+        min: 1
+    },
+    teamTwoName: String,
+    teamTwoId: Number,
+    teamTwoBettorId: Number,
+    betPlaced: Boolean,
+    betConfirmed: Boolean
 });
 
 const Bid = mongoose.model("Bid", BidSchema);
