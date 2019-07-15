@@ -1,14 +1,5 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel'
-<<<<<<< Updated upstream
-import one from "../assets/1.jpg";
-import two from "../assets/2.JPG";
-import three from "../assets/3.jpg";
-import four from "../assets/4.jpg";
-import five from "../assets/5.jpg";
-import six from "../assets/6.jpg";
-import seven from "../assets/7.jpg";
-=======
 import one from "../assets/fight.jpg";
 import two from "../assets/dawkins.jpg";
 import three from "../assets/conor.jpg";
@@ -16,7 +7,6 @@ import four from "../assets/harper.jpg";
 import five from "../assets/heisman.jpg";
 import six from "../assets/odell.jpg";
 import seven from "../assets/soccer.jpg";
->>>>>>> Stashed changes
 import Axios from "axios";
 import Spinner from "react-bootstrap/Spinner"
 

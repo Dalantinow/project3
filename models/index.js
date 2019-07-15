@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise
 
 //your local database url
 //27017 is the default mongoDB port
-let uri = process.env.REACT_APP_MONGO_URI|| 'mongodb://localhost:27017/Ubetcha-DB' 
+let uri = process.env.REACT_APP_MONGO_URI || 'mongodb://localhost:27017/Ubetcha-DB' 
 
 mongoose.connect(uri).then(
     () => { 

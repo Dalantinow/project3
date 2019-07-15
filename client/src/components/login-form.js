@@ -57,34 +57,34 @@ class LoginForm extends Component {
         } else {
             return (
                 <div>
-                 	<Form>
-						<Col sm={5}>
-							<Form.Group controlId="formBasicEmail">
-								<Form.Label>Email address</Form.Label>
-								<Form.Control
-									type="username"
-									placeholder="Enter email"
-									id="username"
-									name="username"
-									value={this.state.username}
-									onChange={this.handleChange} />
-							</Form.Group>
+                    <Form>
+                        <Col sm={5}>
+                            <Form.Group controlId="formBasicEmail">
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control
+                                    type="username"
+                                    placeholder="Enter email"
+                                    id="username"
+                                    name="username"
+                                    value={this.state.username}
+                                    onChange={this.handleChange} />
+                            </Form.Group>
 
-							<Form.Group controlId="formBasicPassword">
-								<Form.Label>Password</Form.Label>
-								<Form.Control
-									placeholder="Password"
-									type="password"
-									name="password"
-									value={this.state.password}
-									onChange={this.handleChange}
-								/>
-							</Form.Group>
-						</Col>
-						<Button onClick={this.handleSubmit} variant="dark" type="submit">
-							Submit
+                            <Form.Group controlId="formBasicPassword">
+                                <Form.Label>Password</Form.Label>
+                                <Form.Control
+                                    placeholder="Password"
+                                    type="password"
+                                    name="password"
+                                    value={this.state.password}
+                                    onChange={this.handleChange}
+                                />
+                            </Form.Group>
+                        </Col>
+                        <Button onClick={this.handleSubmit} variant="dark" type="submit">
+                            Submit
   						</Button>
-					</Form>
+                    </Form>
                 </div>
             );
         };

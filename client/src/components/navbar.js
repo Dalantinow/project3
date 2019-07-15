@@ -38,11 +38,11 @@ class Navjawn extends Component {
                         <Nav className="mr-auto">
                             <ButtonToolbar>
                                 <DropdownButton className="home-button" variant="warning" id="dropdown-basic-button" title="Scores">
-                                    <Dropdown.Item href="/liveScores">Live</Dropdown.Item>
-                                    <Dropdown.Item href="/concludedscores">Concluded</Dropdown.Item>
+                                    <Dropdown.Item href="/liveScores">Live (Coming Soon!)</Dropdown.Item>
+                                    <Dropdown.Item href="/concludedscores">Concluded (Coming Soon!)</Dropdown.Item>
                                 </DropdownButton>
                                 <Button className="home-button" variant="warning" href="/news">News</Button>
-                                <Button className="home-button" href="/account" variant="warning">Account</Button>
+                                <Button className="home-button" href="/account" variant="warning">Account (Coming Soon!)</Button>
                                 <Button className="home-button" href="/" onClick={this.logout} variant="warning">Logout</Button>
                             </ButtonToolbar>
                         </Nav>
@@ -57,8 +57,8 @@ class Navjawn extends Component {
                     <Nav className="mr-auto">
                         <ButtonToolbar>
                             <DropdownButton className="home-button" variant="warning" id="dropdown-basic-button" title="Scores">
-                                <Dropdown.Item href="/livescores">Live</Dropdown.Item>
-                                <Dropdown.Item href="concludedscores">Concluded</Dropdown.Item>
+                                <Dropdown.Item href="/livescores">Live (Coming Soon!)</Dropdown.Item>
+                                <Dropdown.Item href="concludedscores">Concluded (Coming Soon!)</Dropdown.Item>
                             </DropdownButton>
                             <Button className="home-button" href="/news" variant="warning">News</Button>
                         </ButtonToolbar>

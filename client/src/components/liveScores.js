@@ -23,8 +23,8 @@ class LiveScores extends Component {
 
 
     componentDidMount() {
-        var apiLiveKey = process.env.apiLiveKey;
-        var apiLiveSecret = process.env.apiLiveSecret;
+        var apiLiveKey = process.env.REACT_APP_apiLiveKey;
+        var apiLiveSecret = process.env.REACT_APP_apiLiveSecret;
         axios.get('https://livescore-api.com/api-client/scores/live.json?key='  + apiLiveKey + '&secret=' + apiLiveSecret,{
             method: "GET",
             mode: "no-cors",
