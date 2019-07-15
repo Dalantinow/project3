@@ -7,13 +7,10 @@ import LoginForm from './components/login-form';
 import Navjawn from './components/navbar';
 import Home from './components/home';
 import LiveScores from './components/liveScores';
+import News from './components/news'
 import GamePage from './components/game';
 import ConcludedScores from './components/concludedScores';
 import "./App.css";
-import dotenv from "dotenv";
-
-
-dotenv.config();
 
 
 class App extends Component {
@@ -95,28 +92,33 @@ class App extends Component {
         <Route
           path="/bid/:id"
           render={() =>
-            <GamePage/>}
+            <GamePage />}
+        />
+        <Route
+          path="/news"
+          render={() =>
+            <News />}
         />
 
           <script src="https://unpkg.com/react/umd/react.production.js" crossorigin />
-          <script
-            src="https://unpkg.com/react-dom/umd/react-dom.production.js"
-            crossorigin
-          />
-          <script
-            src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-            crossorigin
-          />
-          <script>var Alert = ReactBootstrap.Alert;</script>
-          <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous"
-          />
+        <script
+          src="https://unpkg.com/react-dom/umd/react-dom.production.js"
+          crossorigin
+        />
+        <script
+          src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
+          crossorigin
+        />
+        <script>var Alert = ReactBootstrap.Alert;</script>
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"
+        />
       </div>
-        );
-      };
-    };
-    
-    export default App;
+    );
+  };
+};
+
+export default App;

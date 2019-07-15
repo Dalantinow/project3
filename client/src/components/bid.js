@@ -2,7 +2,7 @@ import React from "react";
 import Axios from "axios";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Button from 'react-bootstrap/Button';
-
+import { BrowserRouter } from 'react-router-dom';
 
 
 class BidButtons extends React.Component {
@@ -22,7 +22,6 @@ class BidButtons extends React.Component {
         
         Axios.post('http://localhost:3001/bid', data)
         .then(res => {
-           
             window.location.href = '/bid/' + res.data._id
         })
         .catch(error => {
@@ -39,7 +38,7 @@ class BidButtons extends React.Component {
                     <Button className="awayhome" variant="warning" onClick={this.onClickHandler}>Home</Button>
                 </ButtonToolbar>
             </>
-        )
-    }
-}
+        );
+    };
+};
 export default BidButtons;
