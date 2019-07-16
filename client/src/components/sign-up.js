@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import { Redirect } from 'react-router-dom';
-
+import Card from 'react-bootstrap/Card';
 
 class Signup extends Component {
 	constructor() {
@@ -55,6 +55,11 @@ class Signup extends Component {
 					<div className="SignupForm">
 						<Form>
 							<Col sm={5}>
+							<Card bg="dark" text="white">
+                                <Card.Title>
+                                    Sign Up Page
+                                </Card.Title>
+                            </Card>
 								<Form.Group controlId="formBasicEmail">
 									<Form.Label>Email address</Form.Label>
 									<Form.Control

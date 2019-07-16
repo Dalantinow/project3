@@ -4,6 +4,7 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card'
 
 class LoginForm extends Component {
     constructor() {
@@ -11,6 +12,7 @@ class LoginForm extends Component {
         this.state = {
             username: '',
             password: '',
+            credits: 100,
             redirectTo: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,11 +28,12 @@ class LoginForm extends Component {
     handleSubmit(event) {
         event.preventDefault()
         console.log('handleSubmit')
+        var userObject = {
+            username: this.state.username,
+            password: this.state.password
+        };
         axios
-            .post('http://localhost:3001/user/login', {
-                username: this.state.username,
-                password: this.state.password
-            })
+            .post('http://localhost:3001/user/login', userObject)
             .then(response => {
                 console.log('login response: ')
                 console.log(response)
@@ -38,11 +41,20 @@ class LoginForm extends Component {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
-                        username: response.data.username
+                        username: response.data.username,
+                        credits: response.data.credits
                     })
                     // update the state to redirect to home
                     this.setState({
                         redirectTo: '/'
+                    }, () => {
+                        var userObject = {
+                            username: this.state.username,
+                            password: this.state.password,
+                            credits: this.state.credits,
+                            loggedIn: this.state.loggedIn
+                        }
+                        localStorage.setItem('userObject', JSON.stringify(userObject))
                     })
                 }
                 else {
@@ -64,6 +76,11 @@ class LoginForm extends Component {
                 <div>
                     <Form>
                         <Col sm={5}>
+                        <Card bg="dark" text="white">
+                                <Card.Title>
+                                    Login Page
+                                </Card.Title>
+                            </Card>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
                                 <Form.Control

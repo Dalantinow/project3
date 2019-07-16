@@ -31,11 +31,10 @@ class BidButtons extends React.Component {
         // if (loggedIn === true) {
             return (
                 <>
-                    <Card.Subtitle>Bet On:  </Card.Subtitle>
-                    <ButtonToolbar>
-                        <Button className="away" variant="warning" onClick={this.onClickHandler}>Away</Button>
-                        <Button className="home" variant="warning" onClick={this.onClickHandler}>Home</Button>
-                    </ButtonToolbar>
+                  
+                        <Button className="awayhome" variant="warning" onClick={this.onClickHandler}>Bet</Button>
+       
+                   
                 </>
 
             );

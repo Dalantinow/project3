@@ -9,9 +9,6 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import BidButtons from "../components/bid";
 
-import dotenv from "dotenv";
-dotenv.config();
-
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -24,6 +21,8 @@ class Home extends Component {
     var apiKey = process.env.REACT_APP_apiKey
     console.log(apiKey);
     require("dotenv").config();
+    var retrievedObject = localStorage.getItem("userObject");
+    console.log("retrievedObject", JSON.parse(retrievedObject));
   }
   onClickHandler = event => {
     const league = event.target.innerHTML;
@@ -73,11 +72,10 @@ class Home extends Component {
         <Container>
           <ControlledCarousel className="carousel" />
           <Row>
-
             <Col sm>
               <Card bg="dark" text="white">
                 <Card.Body>
-                  <Card.Text>Log in and choose a league to get started!</Card.Text>
+                  <Card.Text>Choose a league to get started!</Card.Text>
                   <ButtonToolbar>
                     <MDBDropdown className="MBDDropdown">
                       <MDBDropdownToggle id="upcoming-games" className="home-button" caret color="warning">

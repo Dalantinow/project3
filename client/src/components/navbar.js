@@ -12,9 +12,15 @@ class Navjawn extends Component {
         super()
         this.logout = this.logout.bind(this)
     };
+    componentDidMount() {
+        var retrievedObject = localStorage.getItem("userObject");
+        console.log("retrievedObject", JSON.parse(retrievedObject));
+    }
     logout(event) {
         event.preventDefault()
         console.log('logging out')
+        localStorage.removeItem('retrievedObject');
+        delete window.localStorage['retrievedObject']
         axios.post('http://localhost:3001/user/logout').then(response => {
             console.log(response.data)
             if (response.status === 200) {
@@ -22,6 +28,7 @@ class Navjawn extends Component {
                     loggedIn: false,
                     username: null
                 });
+              
             };
         }).catch(error => {
             console.log('Logout error');
