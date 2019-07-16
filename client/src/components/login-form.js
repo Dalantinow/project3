@@ -45,6 +45,11 @@ class LoginForm extends Component {
                         redirectTo: '/'
                     })
                 }
+                else {
+                    this.setState({
+                        redirectTo: '/signup'
+                    })
+                }
             }).catch(error => {
                 console.log('login error: ')
                 console.log(error);

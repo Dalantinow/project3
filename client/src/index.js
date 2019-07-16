@@ -13,8 +13,8 @@ import dotenv from "dotenv";
 dotenv.config();
 
 ReactDOM.render(
-	<BrowserRouter>
-		<App />
+	<BrowserRouter className="jawn">
+		<App/>
 	</BrowserRouter>,
 	document.getElementById('root')
 )
