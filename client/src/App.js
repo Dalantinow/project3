@@ -8,6 +8,7 @@ import Navjawn from './components/navbar';
 import Home from './components/home';
 import LiveScores from './components/liveScores';
 import News from './components/news'
+import Footer from './components/footer'
 import GamePage from './components/game';
 import ConcludedScores from './components/concludedScores';
 import "./App.css";
@@ -65,6 +66,7 @@ class App extends Component {
 
         {/* Routes to different components */}
         <Route
+        updateUser={this.updateUser} loggedIn={this.state.loggedIn}
           exact path="/"
           component={Home} />
         <Route
@@ -80,6 +82,7 @@ class App extends Component {
             <Signup />}
         />
         <Route
+        updateUser={this.updateUser} loggedIn={this.state.loggedIn}
           path="/livescores"
           render={() =>
             <LiveScores />}
@@ -90,16 +93,19 @@ class App extends Component {
             <ConcludedScores />}
         />
         <Route
+        updateUser={this.updateUser} loggedIn={this.state.loggedIn}
           path="/bid/:id"
           render={() =>
             <GamePage />}
         />
         <Route
+        updateUser={this.updateUser} loggedIn={this.state.loggedIn}
           path="/news"
           render={() =>
             <News />}
         />
-
+       
+          <Footer className="footer"/>
           <script src="https://unpkg.com/react/umd/react.production.js" crossorigin />
         <script
           src="https://unpkg.com/react-dom/umd/react-dom.production.js"

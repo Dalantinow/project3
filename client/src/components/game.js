@@ -58,30 +58,21 @@ class GamePage extends React.Component {
   };
   handleSubmit(event) {
     event.preventDefault()
-    console.log('handleSubmit')
     Axios
-      .put('http://localhost:3001/user/', {
-        username: this.state.username,
-        password: this.state.password
+      .put('http://localhost:3001/user', {
+       credits: this.state.credits - this.state.bidAmount
       })
       .then(response => {
-        console.log('login response: ')
-        console.log(response)
-        if (response.status === 200) {
-          // update App.js state
-          this.props.updateUser({
-            loggedIn: true,
-            username: response.data.username
-          })
-          // update the state to redirect to home
+          console.log(response)
+          console.log("Wager Placed!")
           this.setState({
             redirectTo: '/'
           })
-        }
       }).catch(error => {
         console.log('login error: ')
         console.log(error);
       });
+      Axios.put('http://localhost:3001/bid')
   };
   render() {
 

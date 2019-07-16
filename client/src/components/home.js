@@ -27,8 +27,6 @@ class Home extends Component {
   onClickHandler = event => {
     const league = event.target.innerHTML;
     this.setState({ league })
-
-
     let oddsApiCall = (sport) => {
       // var apiKey = process.env.REACT_APP_apiKey;
       // fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=" + apiKey )
@@ -74,9 +72,10 @@ class Home extends Component {
           <ControlledCarousel className="carousel" />
           <Row>
 
-            <Col className="col-1" sm>
+            <Col sm>
               <Card bg="dark" text="white">
                 <Card.Body>
+                  <Card.Text>Log in and choose a league to get started!</Card.Text>
                   <ButtonToolbar>
                     <MDBDropdown className="MBDDropdown">
                       <MDBDropdownToggle id="upcoming-games" className="home-button" caret color="warning">

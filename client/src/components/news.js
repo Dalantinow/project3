@@ -34,15 +34,15 @@ class News extends React.Component {
 
   render() {
     const { articles, error, isLoaded } = this.state;
-    const loggedIn = this.props.loggedIn;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <Spinner animation="grow" variant="warning" />
-    } else if (loggedIn === true) {
+    // const loggedIn = this.props.loggedIn;
+    // if (error) {
+    //   return <div>Error: {error.message}</div>;
+    // } else if (!isLoaded) {
+    //   return <Spinner animation="grow" variant="warning" />
+    // } else if (loggedIn === true) {
       return (
         <Container>
-          <Col className="col-2" sm>
+          <Col sm>
             <Card bg="dark" text="white">
               <Card.Body>
                 {/*<ButtonToolbar>
@@ -78,7 +78,7 @@ class News extends React.Component {
           </Col>
         </Container>
       );
-    };
+    // };
   };
 };
 export default News;

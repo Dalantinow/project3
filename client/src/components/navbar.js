@@ -42,7 +42,6 @@ class Navjawn extends Component {
                                     <Dropdown.Item href="/concludedscores">Concluded (Coming Soon!)</Dropdown.Item>
                                 </DropdownButton>
                                 <Button className="home-button" variant="warning" href="/news">News</Button>
-                                <Button className="home-button" href="/account" variant="warning">Account (Coming Soon!)</Button>
                                 <Button className="home-button" href="/" onClick={this.logout} variant="warning">Logout</Button>
                             </ButtonToolbar>
                         </Nav>

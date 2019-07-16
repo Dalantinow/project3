@@ -57,7 +57,7 @@ app.get("/scrape", (req, res) => {
 		for (var i = 0; i < 1; i++) {
 			$("div.thing").each(function (i, element) {
 				results.title = $(this).children("div.entry").children("div.top-matter").children("p.title").children("a").text();
-				results.link = $(this).children("p.title").children("a").attr("href");
+				results.link = $(this).children("div.entry").children("div.top-matter").children("p.title").children("a").attr("href");
 				results.thumbnail = $(this).children("a.thumbnail").children("img").attr("src");
 				const newArticle = new Article({
 					title: results.title,
