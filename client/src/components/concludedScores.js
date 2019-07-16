@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 import moment from 'moment';
+import Axios from "axios";
 
 class ConcludedScores extends Component {
     constructor(props) {
@@ -18,9 +19,11 @@ class ConcludedScores extends Component {
 
     componentDidMount() {
         // var apiToken = process.env.apiToken;
-        fetch('https://api.football-data.org/v2/competitions/CL/matches?season=2019&status=FINISHED', {
-            headers: {'X-Auth-Token': '321b9e5504f34bfca96830247c9ff485'}
-        })
+       Axios.get("https://api.mysportsfeeds.com/v1.1/pull/mlb/current_season.json", {
+           'headers': {
+            "Authorization": "Basic " + btoa("b933b969-ca8b-447f-98ce-21b074:MYSPORTSFEEDS")
+           }
+       })
         .then(response => response.json())
             .then((result) => {
                 this.setState({
