@@ -102,11 +102,10 @@ app.post("/bid", function (req, res) {
 		commencementTime: req.body.time
 	});
 	newBid.save((err, savedBid) => {
-		if (err) return res.json(err)
+		if (err) return res.json(err);
+		return res.json(savedBid)
 	});
-	Bid.create(req.body).then(function (data) {
-		res.json(data);
-	});
+	
 
 });
 

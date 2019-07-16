@@ -23,12 +23,14 @@ class Home extends Component {
   componentDidMount() {
     var apiKey = process.env.REACT_APP_apiKey
     console.log(apiKey);
+    require("dotenv").config();
   }
   onClickHandler = event => {
     const league = event.target.innerHTML;
     this.setState({ league })
     let oddsApiCall = (sport) => {
-      // var apiKey = process.env.REACT_APP_apiKey;
+      var apiKey = process.env.REACT_APP_apiKey;
+      console.log(apiKey)
       // fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=" + apiKey )
       fetch("https://api.the-odds-api.com/v3/odds?sport=" + sport + "&region=us&mkt=h2h&apiKey=0cf960a0668ac664d33731f63e58304d")
         .then(res =>

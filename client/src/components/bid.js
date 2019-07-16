@@ -33,8 +33,8 @@ class BidButtons extends React.Component {
                 <>
                     <Card.Subtitle>Bet On:  </Card.Subtitle>
                     <ButtonToolbar>
-                        <Button className="awayhome" variant="warning" onClick={this.onClickHandler}>Away</Button>
-                        <Button className="awayhome" variant="warning" onClick={this.onClickHandler}>Home</Button>
+                        <Button className="away" variant="warning" onClick={this.onClickHandler}>Away</Button>
+                        <Button className="home" variant="warning" onClick={this.onClickHandler}>Home</Button>
                     </ButtonToolbar>
                 </>
 

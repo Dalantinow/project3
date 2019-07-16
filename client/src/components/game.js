@@ -15,7 +15,8 @@ class GamePage extends React.Component {
       bid: {},
       bidamount: undefined,
       isLoaded: false,
-      credits: null
+      credits: null,
+      currentBid: {}
     }
   }
   componentDidMount() {
@@ -25,6 +26,17 @@ class GamePage extends React.Component {
         this.setState({
           isLoaded: true,
           bid: result.data
+        },() => {
+          for (var i = 0; i < result.data.length; i++) {
+            console.log(result.data[i]._id)
+            console.log(window.location.pathname)
+            if (("/bid/" + result.data[i]._id) === window.location.pathname) {
+              this.setState({
+                currentBid: result.data[i]
+              })
+              
+            }
+          }
         });
       },
         (error) => {
@@ -72,21 +84,17 @@ class GamePage extends React.Component {
         console.log('login error: ')
         console.log(error);
       });
-      Axios.put('http://localhost:3001/bid')
+      
+      Axios.put('http://localhost:3001/bid', {
+        teamOneBidAmount: this.state.bidAmount,
+        teamOneBettorId: this.state.username,
+        betPlaced: true
+      })
   };
   render() {
 
-    const { bid, isLoaded, credits, bidAmount } = this.state;
-    console.log(bid);
-    console.log(window.location.pathname)
-    for (var i = 0; i < bid.length; i++) {
-      console.log("/bid/" + bid[i]._id)
-      if ("/bid/" + bid[i]._id === window.location.pathname) {
-
-        // RENDER HERE
-
-      }
-    }
+    const { bid, isLoaded, credits, bidAmount, currentBid } = this.state;
+ 
     if (!isLoaded) {
       return <Spinner animation="grow" variant="warning" />
     } else {
@@ -97,7 +105,7 @@ class GamePage extends React.Component {
             <Card.Text>Credits: {this.state.credits}</Card.Text>
             <Card.Text>Betting Ticket</Card.Text>
             <Card.Body>
-              <Card.Title>{bid.teamOneName} vs {bid.teamTwoName}</Card.Title>
+              <Card.Title>{this.state.currentBid.teamOneName} vs {this.state.currentBid.teamTwoName}</Card.Title>
 
               <Card.Text>
                 Time: {moment(new Date(parseInt(bid.commencementTime * 1000))).format('MMMM Do YYYY, h:mm a')}
