@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import moment from 'moment';
 import Axios from "axios";
 import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import { BrowserRouter } from 'react-router-dom';
@@ -16,11 +17,18 @@ class GamePage extends React.Component {
       bidamount: undefined,
       isLoaded: false,
       credits: null,
-      currentBid: {}
+      currentBid: {},
+      loggedIn: undefined
     }
   }
   componentDidMount() {
     this.getUser();
+    var retrievedObject = localStorage.getItem("userObject");
+    console.log("retrievedObject", JSON.parse(retrievedObject));
+    this.setState({
+      credits: retrievedObject.credits
+    })
+    console.log(this.state.credits)
     Axios.get("http://localhost:3001/bid")
       .then((result) => {
         this.setState({
@@ -28,8 +36,6 @@ class GamePage extends React.Component {
           bid: result.data
         },() => {
           for (var i = 0; i < result.data.length; i++) {
-            console.log(result.data[i]._id)
-            console.log(window.location.pathname)
             if (("/bid/" + result.data[i]._id) === window.location.pathname) {
               this.setState({
                 currentBid: result.data[i]
@@ -52,12 +58,10 @@ class GamePage extends React.Component {
       console.log(response.data);
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ');
-
         this.setState({
           loggedIn: true,
           username: response.data.user.username,
           credits: response.data.user.credits
-
         })
       } else {
         console.log('Get user: no user');
@@ -72,7 +76,7 @@ class GamePage extends React.Component {
     event.preventDefault()
     Axios
       .put('http://localhost:3001/user', {
-       credits: this.state.credits - this.state.bidAmount
+       credits: (this.state.credits - this.state.bidAmount)
       })
       .then(response => {
           console.log(response)
@@ -93,8 +97,10 @@ class GamePage extends React.Component {
   };
   render() {
 
-    const { bid, isLoaded, credits, bidAmount, currentBid } = this.state;
- 
+    const { bid, isLoaded, loggedIn, credits, bidAmount, currentBid } = this.state;
+    
+
+    
     if (!isLoaded) {
       return <Spinner animation="grow" variant="warning" />
     } else {
@@ -108,19 +114,31 @@ class GamePage extends React.Component {
               <Card.Title>{this.state.currentBid.teamOneName} vs {this.state.currentBid.teamTwoName}</Card.Title>
 
               <Card.Text>
-                Time: {moment(new Date(parseInt(bid.commencementTime * 1000))).format('MMMM Do YYYY, h:mm a')}
+                Time: {moment(new Date(parseInt(this.state.currentBid.commencementTime * 1000))).format('MMMM Do YYYY, h:mm a')}
               </Card.Text>
+              
               <Form.Label>Bid Amount</Form.Label>
               <Form.Control
-                type="bidamount"
-                placeholder="$0.00"
-                id="bidamount"
-                name="bidamount"
+                type="awayBidAmount"
+                placeholder="$0"
+                id="awayBidAmount"
+                name="awayBidAmount"
                 value={this.state.bidAmount}
                 onChange={this.handleChange} />
               <Button onClick={this.handleSubmit} variant="warning" type="submit">
-                Submit
+                Submit Away Bet
   						</Button>
+              <Form.Control
+                type="homeBidAmount"
+                placeholder="$0"
+                id="homeBidAmount"
+                name="homeBidAmount"
+                value={this.state.bidAmount}
+                onChange={this.handleChange} />
+              <Button onClick={this.handleSubmit} variant="warning" type="submit">
+                Submit Home Bet
+  						</Button>
+              
 
             </Card.Body>
           </Card>

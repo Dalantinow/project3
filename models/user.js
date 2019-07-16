@@ -8,7 +8,8 @@ const userSchema = new Schema({
 
 	username: { type: String, unique: false, required: false },
 	password: { type: String, unique: false, required: false },
-	credits: { type: Number, required: true, default: 100}
+	credits: { type: Number, required: true, default: 100},
+	loggedIn: Boolean
 
 })
 
