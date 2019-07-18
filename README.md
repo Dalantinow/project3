@@ -12,4 +12,34 @@ This project is a wager application where a user can bet with other users on upc
 
  - The APIs surrounding sports events and odds are innately expensive, so the confirmation of the winners of the games isn't functional yet.
 
+![Alt text](./client/src/assets/homepage.jpg?raw=true "Homepage")
+
+Starting on the homepage, a user can move to the news page, view upcoming games, sign up or log in
+
+![Alt text](./client/src/assets/signup.jpg?raw=true "Sign Up")
  
+Sign up =======> Login
+
+![Alt text](./client/src/assets/login.jpg?raw=true "Log In")
+
+Check out recent sports news articles
+
+![Alt text](./client/src/assets/news.jpg?raw=true "News")
+
+![Alt text](./client/src/assets/loggedin.jpg?raw=true "Pick League")
+
+Back on the homepage, you choose a league of upcoming events
+
+![Alt text](./client/src/assets/upcoming.jpg?raw=true "Upcoming")
+
+Then, choosing a game will lead you to the betting ticket page, where you will enter a bet based off of your remaining credits linked to your account
+
+
+
+
+## Future Functionality
+- Paying for a sports api will allow us to display live and concluded scores and confirm bet winners and distribute the winnings after a period of 24 hours.
+
+- We would love to have the bet page confirm your wager by sending the information to your email address, along with confirmation of the winner of the bet.
+
+- Finding APIs for sporting events, election results, and also eSport results

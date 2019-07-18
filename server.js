@@ -13,7 +13,7 @@ const axios = require("axios");
 const Article = require("./models/Article");
 const Bid = require("./models/Bid")
 const path = require("path");
-require('dotenv').config();
+
 
 // Route requires
 
