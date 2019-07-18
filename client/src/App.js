@@ -106,14 +106,14 @@ class App extends Component {
         />
        
           <Footer className="footer"/>
-          <script src="https://unpkg.com/react/umd/react.production.js" crossorigin />
+          <script src="https://unpkg.com/react/umd/react.production.js" crossorigin="true" />
         <script
           src="https://unpkg.com/react-dom/umd/react-dom.production.js"
-          crossorigin
+          crossorigin="true"
         />
         <script
           src="https://unpkg.com/react-bootstrap@next/dist/react-bootstrap.min.js"
-          crossorigin
+          crossorigin="true"
         />
         <script>var Alert = ReactBootstrap.Alert;</script>
         <link

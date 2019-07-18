@@ -4,10 +4,8 @@ import Button from 'react-bootstrap/Button';
 import moment from 'moment';
 import Axios from "axios";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
-import { BrowserRouter } from 'react-router-dom';
 
 class GamePage extends React.Component {
   constructor(props) {
@@ -23,10 +21,10 @@ class GamePage extends React.Component {
   }
   componentDidMount() {
     this.getUser();
-    var retrievedObject = localStorage.getItem("userObject");
-    console.log("retrievedObject", JSON.parse(retrievedObject));
+    var userObject = localStorage.getItem("userObject");
+    console.log("retrievedObject", JSON.parse(userObject));
     this.setState({
-      credits: retrievedObject.credits
+      credits: userObject.credits
     })
     console.log(this.state.credits)
     Axios.get("http://localhost:3001/bid")
@@ -75,7 +73,7 @@ class GamePage extends React.Component {
   handleSubmit(event) {
     event.preventDefault()
     Axios
-      .put('http://localhost:3001/user', {
+      .put('http://localhost:3001/user/login', {
        credits: (this.state.credits - this.state.bidAmount)
       })
       .then(response => {
@@ -98,9 +96,6 @@ class GamePage extends React.Component {
   render() {
 
     const { bid, isLoaded, loggedIn, credits, bidAmount, currentBid } = this.state;
-    
-
-    
     if (!isLoaded) {
       return <Spinner animation="grow" variant="warning" />
     } else {
